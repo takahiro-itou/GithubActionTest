@@ -6,7 +6,7 @@ env :
 
 jobs :
   build :
-    runs-on : windows-latest
+    runs-on : windows-2022
 
     strategy :
       fail-fast : false
@@ -31,10 +31,17 @@ jobs :
           msbuild  --version
         shell : pwsh
 
+      - name : Restore
+        run  : >
+          dir
+        env  :
+          solution-file : "${{ env.SOLUTION_FILE_PREFIX }}${{ matrix.target-ver }}.sln"
+        shell : pwsh
+
       - name : Build
         working-directory : "${{ github.workspace }}"
         run  : >
-          msbuild -restore -t:Rebuild -p:Platform=x64 -p:Configuration="${{ matrix.build-type }}" "${{ env.solution-file }}"
+          msbuild -t:Rebuild -p:Platform=x64 -p:Configuration="${{ matrix.build-type }}" "${{ env.solution-file }}"
         env  :
           solution-file : "${{ env.SOLUTION_FILE_PREFIX }}${{ matrix.target-ver }}.sln"
         shell : pwsh
