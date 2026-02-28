@@ -33,7 +33,7 @@ jobs :
 
       - name : Restore
         run  : >
-          dir
+          msbuild -t:restore -p:Platform=x64 -p:Configuration="${{ matrix.build-type }}" "${{ env.solution-file }}"
         env  :
           solution-file : "${{ env.SOLUTION_FILE_PREFIX }}${{ matrix.target-ver }}.sln"
         shell : pwsh
