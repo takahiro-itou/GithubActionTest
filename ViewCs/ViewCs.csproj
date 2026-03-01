@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <Platforms>x64;Win32</Platforms>
     <RootNamespace>ViewCs</RootNamespace>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
