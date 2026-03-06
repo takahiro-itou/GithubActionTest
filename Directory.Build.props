@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <ItemGroup>
+    <KnownAppHostPack Update="@(KnownAppHostPack)">
+      <AppHostPackVersion Condition="'%(TargetFramework)' == 'net9.0'">9.0.301</AppHostPackVersion>
+    </KnownAppHostPack>
+  </ItemGroup>
+
   <ImportGroup Label="ProjectConfigurations">
     <Import Project="Props\ProjectConfigs.props" />
   </ImportGroup>
